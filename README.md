@@ -1,10 +1,10 @@
 # Daily-CC-Log
 
-🤖 **智能工作日志生成器** - 基于 Claude-Mem 记忆系统的自动化工作日报/周报生成工具
+🤖 **智能工作日志生成器** - 基于 Claude-Mem 记忆系统的自动化工作日报/周报生成skill
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-purple.svg)](https://github.com/anthropics/claude-code)
+[License: MIT](https://opensource.org/licenses/MIT)
+[Python 3.7+](https://www.python.org/downloads/)
+[Claude Code](https://github.com/anthropics/claude-code)
 
 ## ✨ 功能特性
 
@@ -24,6 +24,7 @@ Daily-CC-Log 采用创新的两步式工作流：
 2. **智能撰写阶段**：Claude AI 读取 JSON 数据，生成自然、简洁、有洞察力的工作日报/周报
 
 这种设计充分发挥了各自优势：
+
 - Python 擅长数据处理和 API 调用
 - Claude AI 擅长自然语言生成和内容组织
 
@@ -44,7 +45,7 @@ cd ~/.claude/skills
 git clone https://github.com/YeyouminTian/daily-cc-log.git
 ```
 
-2. 验证安装：
+1. 验证安装：
 
 ```bash
 ls daily-cc-log/scripts/daily_log.py
@@ -122,6 +123,7 @@ python scripts/daily_log.py --date "last week" --output report.md
 ### Claude-Mem API 端点
 
 默认配置：
+
 - **API 地址**: `http://localhost:37778`
 - **数据库路径**: `~/.claude-mem/claude-mem.db`
 
@@ -157,43 +159,9 @@ daily-cc-log/
     └── daily_log.py   # 核心脚本
 ```
 
-## 🤝 贡献
-
-欢迎贡献代码、报告问题或提出新功能建议！
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
-
-## 📝 开发路线图
-
-- [ ] 支持自定义报告模板
-- [ ] 添加项目过滤配置
-- [ ] 支持多种输出格式（HTML、PDF）
-- [ ] 集成图表可视化
-- [ ] 支持团队协作和多用户报告合并
-
-## 🐛 已知问题
-
-- Windows 控制台可能无法正确显示中文，已通过临时文件方案解决
-- 大数据集（>200条观察）可能需要较长处理时间
-
 ## 📄 许可证
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
-
-## 🙏 致谢
-
-- [Claude-Mem](https://github.com/anthropics/claude-mem) - 提供强大的记忆系统
-- [Anthropic](https://www.anthropic.com/) - Claude AI 模型
-- 所有贡献者和用户
-
-## 📮 联系方式
-
-- 提交 Issue: [GitHub Issues](https://github.com/YeyouminTian/daily-cc-log/issues)
-- 功能建议: [GitHub Discussions](https://github.com/YeyouminTian/daily-cc-log/discussions)
 
 ---
 
