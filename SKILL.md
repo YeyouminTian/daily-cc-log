@@ -62,6 +62,37 @@ rm <temp-file-path>
 
 After reading the structured data, write a concise daily log following these guidelines:
 
+#### Calculate Working Hours
+
+**IMPORTANT**: Calculate the total working hours for each project based on time windows.
+
+For each project, parse the `time_windows` array and calculate total duration:
+
+**Example**:
+```
+Time windows: [
+  {"start": "11:36", "end": "11:59"},
+  {"start": "13:18", "end": "15:16"},
+  {"start": "16:28", "end": "16:30"},
+  {"start": "19:05", "end": "20:15"}
+]
+```
+
+Calculation:
+- 11:36 → 11:59 = 23 minutes
+- 13:18 → 15:16 = 1 hour 58 minutes
+- 16:28 → 16:30 = 2 minutes
+- 19:05 → 20:15 = 1 hour 10 minutes
+
+**Total**: 23m + 1h58m + 2m + 1h10m = **3 hours 33 minutes** (or 3h 33m or 3.55h)
+
+Include this duration in the project section header:
+```markdown
+**工作时段**: 11:36-11:59, 13:18-15:16, 16:28-16:30, 19:05-20:15
+**工作时长**: 3小时33分钟
+**观察记录**: 259条
+```
+
 #### Report Structure
 
 ```markdown
@@ -69,6 +100,7 @@ After reading the structured data, write a concise daily log following these gui
 
 ## 📊 概览
 - 活跃项目数
+- 总工作时长（所有项目时长之和）
 - 工作时段
 - 会话总数
 
@@ -77,6 +109,7 @@ After reading the structured data, write a concise daily log following these gui
 ### 项目：{项目名}
 
 **工作时段**: {时间段}
+**工作时长**: {计算得出的总时长，如：3小时33分钟}
 **观察记录**: {数量}条
 
 #### 主要工作事项
@@ -197,3 +230,39 @@ If no data appears:
 - Time windows: Gaps >30 minutes treated as separate work sessions
 - Observation types: discovery, bugfix, feature, refactor, decision, change
 - The AI-written report should be more natural and insightful than template-generated text
+- **Working hours calculation**: Sum all time window durations for accurate time tracking
+
+## Working Hours Calculation Examples
+
+### Single Project Example
+```json
+"time_windows": [
+  {"start": "09:15", "end": "11:42"},
+  {"start": "14:00", "end": "16:30"}
+]
+```
+**Calculation**:
+- 09:15 → 11:42 = 2 hours 27 minutes
+- 14:00 → 16:30 = 2 hours 30 minutes
+- **Total**: 4 hours 57 minutes
+
+**Report format**: "4小时57分钟" or "4h 57m"
+
+### Multi-Project Daily Summary
+```
+Project A: 3h 33m
+Project B: 1h 45m
+Project C: 2h 15m
+-------------------
+Total: 7h 33m
+```
+
+Include in 📊 概览 section:
+```markdown
+## 📊 概览
+- 活跃项目数: 3个
+- 总工作时长: 7小时33分钟
+- 工作时段: 09:00-12:00, 14:00-18:30, 20:00-21:15
+- 会话总数: 4个
+```
+
